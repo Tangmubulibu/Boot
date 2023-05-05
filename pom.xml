@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.atstudy</groupId>
+    <artifactId>springboot-03</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--jdk版本-->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <!--springboot版本-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.5</version>
+    </parent>
+    <dependencies>
+        <!--mvc相关依赖，(servelt)用于连接服务端和客户端,利用注解给Controller层方法添加映射地址,及获取前端访问时传入的数据.(要下载mybatisX插件,才能快捷生成对应xml文件)-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--用于生成token，需要搭配配置类使用-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!--添加mybatis相关依赖-->
+        <!--mybatis-plus 需要在yml配置-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+        <!--利用注解生成构造方法，及一些需要重写的方法，@AllArgsConstructor @NoArgsConstructor @Data-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--mysql驱动，配合druid，需要在yml中配置数据库信息-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--druid数据库连接池（jdbc）-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+        <!--测试端口，可以测试已定义好的方法，一般测试dao层，test建立与启动类同级目录，定义类加@SpringBootText注解，表示这是一个测试类
+        类中用@Resource注入要调用方法的对象，@Test加在写好的测试方法上，可以单独运行测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <!--分页插件 PageHelper.startPage(1,10),在调用查询方法前使用，一般是controller或test层，需要在yml进行配置-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+<!--        &lt;!&ndash;引入swaggerui相关依赖,需要配置相关配置类，定义类生成开发文档，需要xml中配置访问路径&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-boot-starter</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+        <!--将后端数据渲染到页面，controller层方法可直接返回resources>templates目录下的文件(数据也渲染到此页面)，前后端不分离项目-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--切面类，需要定义切面类使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+    </dependencies>
+</project>
